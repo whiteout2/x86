@@ -28,6 +28,11 @@
 	"icon": "media/dep.png",
 	"main": "./out/src/extension",	
 	"contributes": {
+		"keybindings": [{
+			"command": "workbench.view.extension.package-explorer",
+			"key": "ctrl+shift+i",
+			"mac": "cmd+shift+i"
+    	}],
 		"viewsContainers": {
 			"activitybar": [
 				{
@@ -69,6 +74,10 @@
 			]
 		},
 		"commands": [
+			{
+				"command": "workbench.view.package-explorer",
+				"title": "Show x86 Instructions"
+			},
 			{
 				"command": "nodeDependencies1.addEntry",
 				"title": "Add"
