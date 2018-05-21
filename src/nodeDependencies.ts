@@ -145,7 +145,7 @@ export class DepNodeProvider implements vscode.TreeDataProvider<Dependency> {
 		var mnemonic = 'AAA';
 		var summary = 'ASCII Adjust AL After Subtraction';
 
-		var found_td = 0;
+		var found_td = false;
 		var column = 1;
 		//var table = 0;
 		
@@ -190,7 +190,7 @@ export class DepNodeProvider implements vscode.TreeDataProvider<Dependency> {
 					onopentag: function (name, attribs) {
 						if (name === "td") {  // && attribs.type === "text/javascript") {
 							//console.log("TD! Hooray!");
-							found_td = 1;
+							found_td = true;
 						}
 						//if (name === "table") {
 						//	table++;;
@@ -198,12 +198,12 @@ export class DepNodeProvider implements vscode.TreeDataProvider<Dependency> {
 					},
 					ontext: function (text) {
 						//console.log("-->", text);
-						if (found_td == 1 && column == 1) {
+						if (found_td && column == 1) {
 							//console.log("-->", text);
 							mnemonic = text;
 							column = 2;
 						} else
-						if (found_td == 1 && column == 2) {
+						if (found_td && column == 2) {
 							//console.log("-->", text);
 							// kludge for (1)</td> and (2)</td>
 							if (text.indexOf('(1)') != -1 ||
@@ -232,7 +232,7 @@ export class DepNodeProvider implements vscode.TreeDataProvider<Dependency> {
 					onclosetag: function (tagname) {
 						if (tagname === "td") {
 							//console.log("That's it?!");
-							found_td = 0;
+							found_td = false;
 						}
 					}
 				}, { decodeEntities: true });
