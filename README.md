@@ -6,6 +6,8 @@
 - parses and references https://www.felixcloutier.com/x86
 
 
+![Image of x86 extension](./media/x86_screenshot.png)
+
 
 <!-- # Custom tree view samples
 
