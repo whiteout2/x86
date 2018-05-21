@@ -1,13 +1,13 @@
 {
-	"name": "custom-view-samples",
-	"displayName": "Custom view Samples",
-	"description": "Samples for VSCode's view API",
+	"name": "x86",
+	"displayName": "x86 Instruction Reference",
+	"description": "VSCode extension",
 	"version": "0.0.1",
-	"publisher": "ms-vscode",
+	"publisher": "whiteout",
 	"engines": {
 		"vscode": "^1.23.0"
 	},
-	"enableProposedApi": true,
+	"enableProposedApi": false,
 	"categories": [
 		"Other"
 	],
