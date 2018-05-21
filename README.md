@@ -1,7 +1,10 @@
 # x86 Instruction Reference
 
+- shows x86 instructions in side bar
 - based on tree-view-sample
 - parses and references https://www.felixcloutier.com/x86
+
+
 
 <!-- # Custom tree view samples
 
