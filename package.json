@@ -75,10 +75,6 @@
 		},
 		"commands": [
 			{
-				"command": "workbench.view.package-explorer",
-				"title": "Show x86 Instructions"
-			},
-			{
 				"command": "nodeDependencies1.addEntry",
 				"title": "Add"
 			},
