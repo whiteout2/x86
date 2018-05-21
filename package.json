@@ -1,0 +1,284 @@
+{
+	"name": "custom-view-samples",
+	"displayName": "Custom view Samples",
+	"description": "Samples for VSCode's view API",
+	"version": "0.0.1",
+	"publisher": "ms-vscode",
+	"engines": {
+		"vscode": "^1.23.0"
+	},
+	"enableProposedApi": true,
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onView:nodeDependencies1",
+		"onView:nodeDependencies2",
+		"onView:nodeDependencies3",
+		"onView:nodeDependencies4",
+		"onView:ftpExplorer",
+		"onView:jsonOutline",
+		"onLanguage:json",
+		"onLanguage:jsonc"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Microsoft/vscode-extension-samples.git"
+	},
+	"icon": "media/dep.png",
+	"main": "./out/src/extension",	
+	"contributes": {
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "package-explorer",
+					"title": "x86 Instructions",
+					"icon": "media/dep.svg"
+				}
+			]
+		},
+		"views": {
+			"package-explorer": [
+				{
+					"id": "nodeDependencies1",
+					"name": "Core Instructions"
+				},
+				{
+					"id": "nodeDependencies2",
+					"name": "SGX Instructions"
+				},
+				{
+					"id": "nodeDependencies3",
+					"name": "VMX Instructions"
+				},
+				{
+					"id": "nodeDependencies4",
+					"name": "Xeon Phi™ Instructions"
+				}
+			],
+			"explorer": [
+				{
+					"id": "jsonOutline",
+					"name": "Json Outline",
+					"when": "jsonOutlineEnabled"
+				},
+				{
+					"id": "ftpExplorer",
+					"name": "FTP Explorer"
+				}
+			]
+		},
+		"commands": [
+			{
+				"command": "nodeDependencies1.addEntry",
+				"title": "Add"
+			},
+			{
+				"command": "nodeDependencies2.addEntry",
+				"title": "Add"
+			},
+			{
+				"command": "nodeDependencies3.addEntry",
+				"title": "Add"
+			},
+			{
+				"command": "nodeDependencies4.addEntry",
+				"title": "Add"
+			},
+			{
+				"command": "nodeDependencies1.refreshEntry",
+				"title": "Refresh",
+				"icon": {
+					"light": "resources/light/refresh.svg",
+					"dark": "resources/dark/refresh.svg"
+				}
+			},
+			{
+				"command": "nodeDependencies2.refreshEntry",
+				"title": "Refresh",
+				"icon": {
+					"light": "resources/light/refresh.svg",
+					"dark": "resources/dark/refresh.svg"
+				}
+			},
+			{
+				"command": "nodeDependencies3.refreshEntry",
+				"title": "Refresh",
+				"icon": {
+					"light": "resources/light/refresh.svg",
+					"dark": "resources/dark/refresh.svg"
+				}
+			},
+			{
+				"command": "nodeDependencies4.refreshEntry",
+				"title": "Refresh",
+				"icon": {
+					"light": "resources/light/refresh.svg",
+					"dark": "resources/dark/refresh.svg"
+				}
+			},
+			{
+				"command": "nodeDependencies1.deleteEntry",
+				"title": "Delete"
+			},
+			{
+				"command": "nodeDependencies2.deleteEntry",
+				"title": "Delete"
+			},
+			{
+				"command": "nodeDependencies3.deleteEntry",
+				"title": "Delete"
+			},
+			{
+				"command": "nodeDependencies4.deleteEntry",
+				"title": "Delete"
+			},
+			{
+				"command": "ftpExplorer.refresh",
+				"title": "Refresh",
+				"icon": {
+					"light": "resources/light/refresh.svg",
+					"dark": "resources/dark/refresh.svg"
+				}
+			},
+			{
+				"command": "ftpExplorer.openFtpResource",
+				"title": "Open FTP Resource"
+			},
+			{
+				"command": "ftpExplorer.revealResource",
+				"title": "Reveal in FTP View"
+			},
+			{
+				"command": "jsonOutline.refresh",
+				"title": "Refresh",
+				"icon": {
+					"light": "resources/light/refresh.svg",
+					"dark": "resources/dark/refresh.svg"
+				}
+			},
+			{
+				"command": "jsonOutline.refreshNode",
+				"title": "Refresh",
+				"icon": {
+					"light": "resources/light/refresh.svg",
+					"dark": "resources/dark/refresh.svg"
+				}
+			},
+			{
+				"command": "jsonOutline.renameNode",
+				"title": "Rename"
+			}
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "ftpExplorer.revealResource"
+				}
+			],
+			"view/title": [
+				{
+					"command": "jsonOutline.refresh",
+					"when": "view == jsonOutline",
+					"group": "navigation"
+				},
+				{
+					"command": "nodeDependencies1.refreshEntry",
+					"when": "view == nodeDependencies1",
+					"group": "navigation"
+				},
+				{
+					"command": "nodeDependencies2.refreshEntry",
+					"when": "view == nodeDependencies2",
+					"group": "navigation"
+				},
+				{
+					"command": "nodeDependencies3.refreshEntry",
+					"when": "view == nodeDependencies3",
+					"group": "navigation"
+				},
+				{
+					"command": "nodeDependencies4.refreshEntry",
+					"when": "view == nodeDependencies4",
+					"group": "navigation"
+				},
+				{
+					"command": "nodeDependencies1.addEntry",
+					"when": "view == nodeDependencies1"
+				},
+				{
+					"command": "nodeDependencies2.addEntry",
+					"when": "view == nodeDependencies2"
+				},
+				{
+					"command": "nodeDependencies3.addEntry",
+					"when": "view == nodeDependencies3"
+				},
+				{
+					"command": "nodeDependencies4.addEntry",
+					"when": "view == nodeDependencies4"
+				},
+				{
+					"command": "ftpExplorer.refresh",
+					"when": "view == ftpExplorer",
+					"group": "navigation"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "nodeDependencies1.deleteEntry",
+					"when": "view == nodeDependencies1 && viewItem == dependency"
+				},
+				{
+					"command": "nodeDependencies2.deleteEntry",
+					"when": "view == nodeDependencies2 && viewItem == dependency"
+				},
+				{
+					"command": "nodeDependencies3.deleteEntry",
+					"when": "view == nodeDependencies3 && viewItem == dependency"
+				},
+				{
+					"command": "nodeDependencies4.deleteEntry",
+					"when": "view == nodeDependencies4 && viewItem == dependency"
+				},
+				{
+					"command": "jsonOutline.renameNode",
+					"when": "view == jsonOutline"
+				},
+				{
+					"command": "jsonOutline.refreshNode",
+					"when": "view == jsonOutline",
+					"group": "inline"
+				}
+			]
+		},
+		"configuration": [
+			{
+				"title": "JSON Outline",
+				"properties": {
+					"jsonOutline.autorefresh": {
+						"type": "boolean",
+						"default": false
+					}
+				}
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "tsc -p ./",
+		"compile": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install"
+	},
+	"devDependencies": {
+		"typescript": "^2.1.4",
+		"vscode": "^1.1.17",
+		"@types/node": "*"
+	},
+	"dependencies": {
+		"ftp": "^0.3.10",
+		"htmlparser2": "^3.9.2",
+		"jsftp": "^2.0.0",
+		"jsonc-parser": "^0.4.2",
+		"request": "^2.86.0"
+	}
+}
