@@ -28,13 +28,13 @@ export class DepNodeProvider implements vscode.TreeDataProvider<Dependency> {
 	}
 
 	getChildren(element?: Dependency): Thenable<Dependency[]> {
-		if (!this.workspaceRoot) {
-			vscode.window.showInformationMessage('No dependency in empty workspace');
-			return Promise.resolve([]);
-		}
+		// if (!this.workspaceRoot) {
+		// 	vscode.window.showInformationMessage('No dependency in empty workspace');
+		// 	return Promise.resolve([]);
+		// }
 
 		return new Promise(resolve => {
-			if (element) {
+		/* 	if (element) {
 				resolve(this.getDepsInPackageJson(path.join(this.workspaceRoot, 'node_modules', element.label, 'package.json')));
 			} else {
 				const packageJsonPath = path.join(this.workspaceRoot, 'package.json');
@@ -44,8 +44,12 @@ export class DepNodeProvider implements vscode.TreeDataProvider<Dependency> {
 					vscode.window.showInformationMessage('Workspace has no package.json');
 					resolve([]);
 				}
-			}
+			} */
+			
+			// Also make it work in an empty workspace
+			resolve(this.getDepsInPackageJson('foobar'));
 		});
+		
 	}
 
 	/**
