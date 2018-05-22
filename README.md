@@ -5,8 +5,7 @@
 - based on tree-view-sample
 - parses and references https://www.felixcloutier.com/x86
 
-
-
+<p>
 ![Image of x86 extension](https://raw.githubusercontent.com/whiteout2/x86/master/media/x86_screenshot.png)
 
 
