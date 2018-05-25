@@ -83,7 +83,6 @@ export class DepNodeProvider implements vscode.TreeDataProvider<Dependency> {
 		});
 		*/
 
-		
 
 		//return new Array<Dependency>(dep1, dep2, dep3, dep4);
 		//return deps;
@@ -153,7 +152,7 @@ export class DepNodeProvider implements vscode.TreeDataProvider<Dependency> {
 		var column = 1;
 		//var table = 0;
 		
-
+		
 		// Read html file
 		//fs.readFileSync('https://www.felixcloutier.com/x86/index.html', 'utf-8')
 		//request('http://google.com/doodle.png').pipe(fs.createWriteStream('doodle.png'))
@@ -186,6 +185,14 @@ export class DepNodeProvider implements vscode.TreeDataProvider<Dependency> {
 				//console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
 				//console.log('body:', body); // Print the HTML for the Google homepage.
 
+
+				// TEST: reading html and writing to file for use in previewHtml
+				// OK works!
+				fs.writeFileSync('/Users/RG/Documents/comp/whiteout2/tree-view-sample-x86/x86/index.html', body);
+
+
+
+				// TODO: Must also parse <a href></a> as some mnemonics are grouped together on one page
 			
 				// Parse html file
 				// NOTE: fucks up with: (1)</td>

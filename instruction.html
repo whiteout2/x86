@@ -1,0 +1,33 @@
+<html>
+<head>
+    <script language="JavaScript">
+        function processUser()
+        {
+          var parameters = location.search.substring(1).split("&");
+      
+          var temp = parameters[0].split("=");
+          l = unescape(temp[1]);
+          //alert('l: ' + l);
+          //temp = parameters[1].split("=");
+          //p = unescape(temp[1]);
+          //document.getElementById("log").innerHTML = l;
+          //window.location = 'https://www.felixcloutier.com/x86/' + l + '.html';
+          //document.getElementById("pass").innerHTML = p;
+
+          document.getElementById('instr').src = 'https://www.felixcloutier.com/x86/' + l + '.html';
+
+          //alert('l: ' + l);
+        }
+      </script>
+</head>
+<body onload="processUser()">
+    <iframe id="instr" width="100%" height="100%" src="https://www.felixcloutier.com/x86/AAA.html" ></iframe>
+
+    <div id="log"></div>
+    <div id="pass"></div>
+
+    <script language="JavaScript">
+        //document.getElementById("log").innerHTML = 'Shit';
+    </script>    
+</body>
+</html>

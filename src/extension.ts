@@ -1,6 +1,7 @@
 'use strict';
 
 import * as vscode from 'vscode';
+import * as fs from 'fs';
 
 import { DepNodeProvider } from './nodeDependencies'
 import { JsonOutlineProvider } from './jsonOutline'
@@ -42,7 +43,23 @@ export function activate(context: vscode.ExtensionContext) {
 	vscode.commands.registerCommand('nodeDependencies4.deleteEntry', node => vscode.window.showInformationMessage('Successfully called delete entry'));
 
 	// This opens mnemonic documentation in a browser
-	vscode.commands.registerCommand('extension.openPackageOnNpm', moduleName => vscode.commands.executeCommand('vscode.open', vscode.Uri.parse(`https://www.felixcloutier.com/x86/${moduleName}.html`)));
+	//vscode.commands.registerCommand('extension.openPackageOnNpm', moduleName => vscode.commands.executeCommand('vscode.open', vscode.Uri.parse(`https://www.felixcloutier.com/x86/${moduleName}.html`)));
+
+	// TEST: open up inside VS Code
+	//var myExtDir = vscode.extensions.getExtension ("whiteout2.x86").extensionPath;
+	//vscode.commands.registerCommand('extension.openPackageOnNpm', moduleName => vscode.commands.executeCommand('vscode.previewHtml', vscode.Uri.parse(`file:///Users/RG/Documents/comp/whiteout2/tree-view-sample-x86/${moduleName}.html`)));
+	//vscode.commands.registerCommand('extension.openPackageOnNpm', moduleName => vscode.commands.executeCommand('vscode.previewHtml', vscode.Uri.parse('file://' + myExtDir + '/instruction.html?q=AAA')));
+	//vscode.commands.registerCommand('extension.openPackageOnNpm', moduleName => vscode.commands.executeCommand('vscode.previewHtml', vscode.Uri.parse('Test')));
+	vscode.commands.registerCommand('extension.openPackageOnNpm', moduleName => viewInstruction(moduleName));
+
+	//NOTE: vscode.previewHtml only takes local files, not http resources. To show a webpage inside
+	// VS Code open a html file and let that file open a webpage inside an iframe
+	// HELL: VS Code strips query strings and iframes do not look good.
+	// Or use TextDocumentContentProvider ???
+	// Or simply download the file first
+	// Or just ship entire website files with the extension (lame)
+	// But how to find the path to the local file. Is there a variable indicating the current extension dir?
+
 
 	vscode.window.registerTreeDataProvider('jsonOutline', jsonOutlineProvider);
 	vscode.commands.registerCommand('jsonOutline.refresh', () => jsonOutlineProvider.refresh());
@@ -51,4 +68,26 @@ export function activate(context: vscode.ExtensionContext) {
 	vscode.commands.registerCommand('extension.openJsonSelection', range => jsonOutlineProvider.select(range));
 
 	new FtpExplorer(context);
+}
+
+
+function viewInstruction(moduleName)
+{
+	console.log("Item clicked: ", moduleName);
+
+	// TODO: check if file is already in /x86 cache to skip the download
+	
+	var request = require('request');
+	request.get(`https://www.felixcloutier.com/x86/${moduleName}.html`, function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+			// strip <header></header>
+			var body1 = body.slice(0, body.indexOf('<header>'));
+			var body2 = body.slice(body.indexOf('</header>')+9, body.length);
+			body = body1 + body2;
+
+			fs.writeFileSync(`/Users/RG/Documents/comp/whiteout2/tree-view-sample-x86/x86/${moduleName}.html`, body);
+			vscode.commands.executeCommand('vscode.previewHtml', vscode.Uri.parse(`file:///Users/RG/Documents/comp/whiteout2/tree-view-sample-x86/x86/${moduleName}.html`), 1, `${moduleName}`);
+		}
+	}); // End: request.get()
+
 }
