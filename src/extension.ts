@@ -75,7 +75,9 @@ function viewInstruction(moduleName)
 {
 	console.log("Item clicked: ", moduleName);
 
-	// TODO: check if file is already in /x86 cache to skip the download
+	// TODO: 
+	// - Check if file is already in /x86 cache to skip the download (not really necessary)
+	// - Got rid of hardcoded /Users/RG/Documents/comp/whiteout2/tree-view-sample-x86/
 	
 	var request = require('request');
 	request.get(`https://www.felixcloutier.com/x86/${moduleName}.html`, function (error, response, body) {

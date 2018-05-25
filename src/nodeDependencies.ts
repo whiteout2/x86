@@ -192,7 +192,7 @@ export class DepNodeProvider implements vscode.TreeDataProvider<Dependency> {
 
 
 
-				// TODO: Must also parse <a href></a> as some mnemonics are grouped together on one page
+				// TODO: Parse <a href></a> as some mnemonics are grouped together on one page
 			
 				// Parse html file
 				// NOTE: fucks up with: (1)</td>
