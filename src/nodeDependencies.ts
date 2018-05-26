@@ -147,6 +147,7 @@ export class DepNodeProvider implements vscode.TreeDataProvider<Dependency> {
 
 		var mnemonic = 'AAA';
 		var summary = 'ASCII Adjust AL After Subtraction';
+		var link = './AAA.html';
 
 		var found_td = false;
 		var column = 1;
@@ -188,7 +189,9 @@ export class DepNodeProvider implements vscode.TreeDataProvider<Dependency> {
 
 				// TEST: reading html and writing to file for use in previewHtml
 				// OK works!
-				fs.writeFileSync('/Users/RG/Documents/comp/whiteout2/tree-view-sample-x86/x86/index.html', body);
+				var myExtDir = vscode.extensions.getExtension ("whiteout2.x86").extensionPath;
+				//fs.writeFileSync('/Users/RG/Documents/comp/whiteout2/tree-view-sample-x86/x86/index.html', body);
+				fs.writeFileSync(myExtDir + '/x86/index.html', body);
 
 
 
@@ -202,6 +205,11 @@ export class DepNodeProvider implements vscode.TreeDataProvider<Dependency> {
 						if (name === "td") {  // && attribs.type === "text/javascript") {
 							//console.log("TD! Hooray!");
 							found_td = true;
+						}
+						if (name === "a" && found_td) {
+							console.log("link: ", attribs.href);
+							link = attribs.href;
+							link = link.slice(2, link.length);
 						}
 						//if (name === "table") {
 						//	table++;;
@@ -233,7 +241,7 @@ export class DepNodeProvider implements vscode.TreeDataProvider<Dependency> {
 								var dep = new Dependency(mnemonic, summary, vscode.TreeItemCollapsibleState.None, {
 									command: 'extension.openPackageOnNpm',
 									title: '',
-									arguments: [mnemonic]
+									arguments: [mnemonic, link]
 								});
 
 								deps.push(dep);

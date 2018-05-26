@@ -50,7 +50,7 @@ export function activate(context: vscode.ExtensionContext) {
 	//vscode.commands.registerCommand('extension.openPackageOnNpm', moduleName => vscode.commands.executeCommand('vscode.previewHtml', vscode.Uri.parse(`file:///Users/RG/Documents/comp/whiteout2/tree-view-sample-x86/${moduleName}.html`)));
 	//vscode.commands.registerCommand('extension.openPackageOnNpm', moduleName => vscode.commands.executeCommand('vscode.previewHtml', vscode.Uri.parse('file://' + myExtDir + '/instruction.html?q=AAA')));
 	//vscode.commands.registerCommand('extension.openPackageOnNpm', moduleName => vscode.commands.executeCommand('vscode.previewHtml', vscode.Uri.parse('Test')));
-	vscode.commands.registerCommand('extension.openPackageOnNpm', moduleName => viewInstruction(moduleName));
+	vscode.commands.registerCommand('extension.openPackageOnNpm', (moduleName, moduleLink) => viewInstruction(moduleName, moduleLink));
 
 	//NOTE: vscode.previewHtml only takes local files, not http resources. To show a webpage inside
 	// VS Code open a html file and let that file open a webpage inside an iframe
@@ -71,24 +71,26 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 
-function viewInstruction(moduleName)
+function viewInstruction(moduleName, moduleLink)
 {
 	console.log("Item clicked: ", moduleName);
 
 	// TODO: 
 	// - Check if file is already in /x86 cache to skip the download (not really necessary)
-	// - Got rid of hardcoded /Users/RG/Documents/comp/whiteout2/tree-view-sample-x86/
+	// - Get rid of hardcoded /Users/RG/Documents/comp/whiteout2/tree-view-sample-x86/
 	
+	var myExtDir = vscode.extensions.getExtension ("whiteout2.x86").extensionPath;
+					
 	var request = require('request');
-	request.get(`https://www.felixcloutier.com/x86/${moduleName}.html`, function (error, response, body) {
+	request.get(`https://www.felixcloutier.com/x86/${moduleLink}`, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
 			// strip <header></header>
 			var body1 = body.slice(0, body.indexOf('<header>'));
 			var body2 = body.slice(body.indexOf('</header>')+9, body.length);
 			body = body1 + body2;
 
-			fs.writeFileSync(`/Users/RG/Documents/comp/whiteout2/tree-view-sample-x86/x86/${moduleName}.html`, body);
-			vscode.commands.executeCommand('vscode.previewHtml', vscode.Uri.parse(`file:///Users/RG/Documents/comp/whiteout2/tree-view-sample-x86/x86/${moduleName}.html`), 1, `${moduleName}`);
+			fs.writeFileSync(myExtDir + `/x86/${moduleLink}`, body);
+			vscode.commands.executeCommand('vscode.previewHtml', vscode.Uri.parse(`file://` + myExtDir + `/x86/${moduleLink}`), 1, `${moduleName}`);
 		}
 	}); // End: request.get()
 
