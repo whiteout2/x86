@@ -52,7 +52,7 @@ export function activate(context: vscode.ExtensionContext) {
 	//vscode.commands.registerCommand('extension.openPackageOnNpm', moduleName => vscode.commands.executeCommand('vscode.previewHtml', vscode.Uri.parse('Test')));
 	vscode.commands.registerCommand('extension.openPackageOnNpm', (moduleName, moduleLink) => viewInstruction(moduleName, moduleLink));
 
-	//NOTE: vscode.previewHtml only takes local files, not http resources. To show a webpage inside
+	// NOTE: vscode.previewHtml only takes local files, not http resources. To show a webpage inside
 	// VS Code open a html file and let that file open a webpage inside an iframe
 	// HELL: VS Code strips query strings and iframes do not look good.
 	// Or use TextDocumentContentProvider ???
