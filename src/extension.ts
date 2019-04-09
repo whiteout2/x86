@@ -89,8 +89,31 @@ function viewInstruction(moduleName, moduleLink)
 			var body2 = body.slice(body.indexOf('</header>')+9, body.length);
 			body = body1 + body2;
 
-			fs.writeFileSync(myExtDir + `/x86/${moduleLink}`, body);
-			vscode.commands.executeCommand('vscode.previewHtml', vscode.Uri.parse(`file://` + myExtDir + `/x86/${moduleLink}`), 1, `${moduleName}`);
+			// NOTE: Some html files have : in their names. Mac turns them to /
+			// Windows refuses to write them.
+			// NOTE2: When there is a file with / in the title in the /x86 directory and we publish
+			// the package, it won't install on Windows. Also, when we empty the /x86 directory 
+			// before publication to remedy this, the extension won't work because empty directories
+			// won't be packaged/published and the /x86 dir is needed.
+			// TODO: Change all : into _
+			var regex = /:/gi;
+			var cleanFileName = moduleLink.replace(regex, '_');
+
+			fs.writeFileSync(myExtDir + `/x86/${cleanFileName}`, body);
+
+			// TODO: previewHtml is deprecated, use Webview API
+			//vscode.commands.executeCommand('vscode.previewHtml', vscode.Uri.parse(`file://` + myExtDir + `/x86/${moduleLink}`), 1, `${moduleName}`);
+			// Create and show panel
+			const panel = vscode.window.createWebviewPanel(
+				'catCoding',
+				`${moduleName}`,
+				vscode.ViewColumn.One,
+				{}
+			);
+
+			// And set its HTML content
+			panel.webview.html = body;
+
 		}
 	}); // End: request.get()
 

@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.3.3
+
+- Using Webview API to open instructions since previewHtml is deprecated
+- Resolved issue where extension would not install on Windows because of filenames containing ':'
+
 ## 0.1.0
 
 - Instruction reference now opens up in VS Code itself (using previewHtml) instead of externally in default browser

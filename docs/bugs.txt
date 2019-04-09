@@ -1,0 +1,4 @@
+Cannot read property 'local' of undefined
+Windows 7
+VSCode 1.33.00
+
