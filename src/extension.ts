@@ -91,7 +91,7 @@ function viewInstruction(moduleName, moduleLink)
 
 			// NOTE: Some html files have : in their names. Mac turns them to /
 			// Windows refuses to write them.
-			// NOTE2: When there is a file with / in the title in the /x86 directory and we publish
+			// NOTE2: When there is a file with / in the name in the /x86 directory and we publish
 			// the package, it won't install on Windows. Also, when we empty the /x86 directory 
 			// before publication to remedy this, the extension won't work because empty directories
 			// won't be packaged/published and the /x86 dir is needed.
