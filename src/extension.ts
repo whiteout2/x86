@@ -96,9 +96,11 @@ function viewInstruction(moduleName, moduleLink)
 			// before publication to remedy this, the extension won't work because empty directories
 			// won't be packaged/published and the /x86 dir is needed.
 			// TODO: Change all : into _
+			// DONE:
 			var regex = /:/gi;
 			var cleanFileName = moduleLink.replace(regex, '_');
 
+			// TODO: Check that /x86 dir exists, if not create it
 			fs.writeFileSync(myExtDir + `/x86/${cleanFileName}`, body);
 
 			// TODO: previewHtml is deprecated, use Webview API
