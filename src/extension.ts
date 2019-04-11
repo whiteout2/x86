@@ -100,7 +100,12 @@ function viewInstruction(moduleName, moduleLink)
 			var regex = /:/gi;
 			var cleanFileName = moduleLink.replace(regex, '_');
 
-			// TODO: Check that /x86 dir exists, if not create it
+			// TODO: Extra check that /x86 dir exists, if not create it. But we should already
+			// have created it when extension installs
+			// DONE:
+			if (!fs.existsSync(myExtDir + `/x86`)) {
+				fs.mkdirSync(myExtDir + `/x86`);
+			}
 			fs.writeFileSync(myExtDir + `/x86/${cleanFileName}`, body);
 
 			// TODO: previewHtml is deprecated, use Webview API
