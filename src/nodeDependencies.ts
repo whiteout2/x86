@@ -91,9 +91,11 @@ export class DepNodeProvider implements vscode.TreeDataProvider<Dependency> {
 		// complex enough as it is. We'll just index into the total array here.
 		switch (this.view) {
 			case 1: return deps.slice(0, this.getIndex('XTEST')+1);
-			case 2: return deps.slice(this.getIndex('EACCEPT'), this.getIndex('EWB')+1);
-			case 3: return deps.slice(this.getIndex('INVEPT'), this.getIndex('VMXON')+1);
-			case 4: return deps.slice(this.getIndex('PREFETCHWT1'), this.getIndex('VSCATTERPF1QPS')+1);
+			//case 2: return deps.slice(this.getIndex('EACCEPT'), this.getIndex('EWB')+1);
+			case 2: return deps.slice(this.getIndex('ENCLS'), this.getIndex('ENCLV[ESETCONTEXT]')+1);
+			case 3: return deps.slice(this.getIndex('GETSEC[CAPABILITIES]'), this.getIndex('GETSEC[WAKEUP]')+1);
+			case 4: return deps.slice(this.getIndex('INVEPT'), this.getIndex('VMXON')+1);
+			case 5: return deps.slice(this.getIndex('PREFETCHWT1'), this.getIndex('VSCATTERPF1QPS')+1);
 		}
 
 
@@ -260,12 +262,13 @@ export class DepNodeProvider implements vscode.TreeDataProvider<Dependency> {
 				
 				// End parse
 				console.log("Parse end.");
-				// Trigger a refresh of the 4 views
+				
+				// Trigger a refresh of the 5 views
 				vscode.commands.executeCommand('nodeDependencies1.refreshEntry');
 				vscode.commands.executeCommand('nodeDependencies2.refreshEntry');
 				vscode.commands.executeCommand('nodeDependencies3.refreshEntry');
 				vscode.commands.executeCommand('nodeDependencies4.refreshEntry');
-
+				vscode.commands.executeCommand('nodeDependencies5.refreshEntry');
 
 			}
 		}); // End: request.get()

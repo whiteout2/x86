@@ -18,6 +18,7 @@ export function activate(context: vscode.ExtensionContext) {
 	const nodeDependenciesProvider2 = new DepNodeProvider(rootPath, 2);
 	const nodeDependenciesProvider3 = new DepNodeProvider(rootPath, 3);
 	const nodeDependenciesProvider4 = new DepNodeProvider(rootPath, 4);
+	const nodeDependenciesProvider5 = new DepNodeProvider(rootPath, 5);
 	const jsonOutlineProvider = new JsonOutlineProvider(context);
 
 	//vscode.window.registerTreeDataProvider('nodeDependencies', nodeDependenciesProvider);
@@ -25,22 +26,29 @@ export function activate(context: vscode.ExtensionContext) {
 	vscode.window.registerTreeDataProvider('nodeDependencies2', nodeDependenciesProvider2);
 	vscode.window.registerTreeDataProvider('nodeDependencies3', nodeDependenciesProvider3);
 	vscode.window.registerTreeDataProvider('nodeDependencies4', nodeDependenciesProvider4);
+	vscode.window.registerTreeDataProvider('nodeDependencies5', nodeDependenciesProvider5);
 	
 	//vscode.commands.registerCommand('nodeDependencies.refreshEntry', () => nodeDependenciesProvider.refresh());
 	vscode.commands.registerCommand('nodeDependencies1.refreshEntry', () => nodeDependenciesProvider1.refresh());
 	vscode.commands.registerCommand('nodeDependencies2.refreshEntry', () => nodeDependenciesProvider2.refresh());
 	vscode.commands.registerCommand('nodeDependencies3.refreshEntry', () => nodeDependenciesProvider3.refresh());
 	vscode.commands.registerCommand('nodeDependencies4.refreshEntry', () => nodeDependenciesProvider4.refresh());
+	vscode.commands.registerCommand('nodeDependencies5.refreshEntry', () => nodeDependenciesProvider5.refresh());
+
 
 	vscode.commands.registerCommand('nodeDependencies1.addEntry', node => vscode.window.showInformationMessage('Successfully called add entry'));
 	vscode.commands.registerCommand('nodeDependencies2.addEntry', node => vscode.window.showInformationMessage('Successfully called add entry'));
 	vscode.commands.registerCommand('nodeDependencies3.addEntry', node => vscode.window.showInformationMessage('Successfully called add entry'));
 	vscode.commands.registerCommand('nodeDependencies4.addEntry', node => vscode.window.showInformationMessage('Successfully called add entry'));
+	vscode.commands.registerCommand('nodeDependencies5.addEntry', node => vscode.window.showInformationMessage('Successfully called add entry'));
+
 
 	vscode.commands.registerCommand('nodeDependencies1.deleteEntry', node => vscode.window.showInformationMessage('Successfully called delete entry'));
 	vscode.commands.registerCommand('nodeDependencies2.deleteEntry', node => vscode.window.showInformationMessage('Successfully called delete entry'));
 	vscode.commands.registerCommand('nodeDependencies3.deleteEntry', node => vscode.window.showInformationMessage('Successfully called delete entry'));
 	vscode.commands.registerCommand('nodeDependencies4.deleteEntry', node => vscode.window.showInformationMessage('Successfully called delete entry'));
+	vscode.commands.registerCommand('nodeDependencies5.deleteEntry', node => vscode.window.showInformationMessage('Successfully called delete entry'));
+
 
 	// This opens mnemonic documentation in a browser
 	//vscode.commands.registerCommand('extension.openPackageOnNpm', moduleName => vscode.commands.executeCommand('vscode.open', vscode.Uri.parse(`https://www.felixcloutier.com/x86/${moduleName}.html`)));

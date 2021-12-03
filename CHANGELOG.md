@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.4.0
+
+- Migration to @vscode/test-electron API since vscode is deprecated
+- Show icon with correct size
+- Added view for VMX instructions
+
 ## 0.3.3
 
 - Using Webview API to open instructions since previewHtml is deprecated
