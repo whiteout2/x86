@@ -332,6 +332,7 @@
         "htmlparser2": "^3.9.2",
         "jsftp": "^2.0.0",
         "jsonc-parser": "^0.4.2",
-        "request": "^2.86.0"
+        "request": "^2.86.0",
+        "cryptiles": ">=4.1.2"
     }
 }
