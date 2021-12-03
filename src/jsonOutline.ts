@@ -29,7 +29,7 @@ export class JsonOutlineProvider implements vscode.TreeDataProvider<number> {
 		if (offset) {
 			this._onDidChangeTreeData.fire(offset);
 		} else {
-			this._onDidChangeTreeData.fire();
+			this._onDidChangeTreeData.fire(undefined);
 		}
 	}
 

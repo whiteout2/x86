@@ -124,7 +124,7 @@ export class FtpTreeDataProvider implements TreeDataProvider<FtpNode>, TextDocum
 	constructor(private readonly model: FtpModel) { }
 
 	public refresh(): any {
-		this._onDidChangeTreeData.fire();
+		this._onDidChangeTreeData.fire(null);
 	}
 
 

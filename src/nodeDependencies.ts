@@ -20,7 +20,7 @@ export class DepNodeProvider implements vscode.TreeDataProvider<Dependency> {
 
 	refresh(): void {
 		console.log("Refresh view:", this.view);
-		this._onDidChangeTreeData.fire();
+		this._onDidChangeTreeData.fire(null);
 	}
 
 	getTreeItem(element: Dependency): vscode.TreeItem {
@@ -262,7 +262,7 @@ export class DepNodeProvider implements vscode.TreeDataProvider<Dependency> {
 				
 				// End parse
 				console.log("Parse end.");
-				
+
 				// Trigger a refresh of the 5 views
 				vscode.commands.executeCommand('nodeDependencies1.refreshEntry');
 				vscode.commands.executeCommand('nodeDependencies2.refreshEntry');
@@ -292,11 +292,14 @@ class Dependency extends vscode.TreeItem {
 		public readonly command?: vscode.Command
 	) {
 		super(label, collapsibleState);
+
+		this.tooltip = `${this.label}-${this.version}`;
+		this.description = this.version;
 	}
 
-	get tooltip(): string {
-		return `${this.label} - ${this.version}`
-	}
+	//get tooltip(): string {
+	//	return `${this.label} - ${this.version}`
+	//}
 
 	iconPath = {
 		light: path.join(__filename, '..', '..', '..', 'resources', 'light', 'dependency.svg'),
