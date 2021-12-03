@@ -2,7 +2,7 @@
     "name": "x86",
     "displayName": "x86 Instruction Reference",
     "description": "Intel x86 instruction reference in a VS Code custom Activity Bar view",
-    "version": "0.4.0",
+    "version": "0.4.1",
     "publisher": "whiteout2",
     "engines": {
         "vscode": "^1.32.0"
@@ -306,27 +306,27 @@
         ]
     },
     "scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./",
-		"lint": "eslint . --ext .ts,.tsx",
-		"watch": "tsc -watch -p ./",
-		"pretest": "npm run compile",
-		"test": "node ./out/test/runTest.js"
-	},
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "lint": "eslint . --ext .ts,.tsx",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile",
+        "test": "node ./out/test/runTest.js"
+    },
     "devDependencies": {
-		"@types/glob": "^7.1.1",
-		"@types/mocha": "^5.2.6",
-		"@types/node": "^12.12.0",
-		"@types/vscode": "^1.32.0",
-		"@typescript-eslint/eslint-plugin": "^4.16.0",
-		"@typescript-eslint/parser": "^4.16.0",
-		"@vscode/test-electron": "^1.6.1",
-		"eslint": "^7.21.0",
-		"glob": "^7.1.4",
-		"mocha": "^6.1.4",
-		"source-map-support": "^0.5.12",
-		"typescript": "^4.2.2"
-	},
+        "@types/glob": "^7.1.1",
+        "@types/mocha": "^5.2.6",
+        "@types/node": "^12.12.0",
+        "@types/vscode": "^1.32.0",
+        "@typescript-eslint/eslint-plugin": "^4.16.0",
+        "@typescript-eslint/parser": "^4.16.0",
+        "@vscode/test-electron": "^1.6.1",
+        "eslint": "^7.21.0",
+        "glob": "^7.1.4",
+        "mocha": "^6.1.4",
+        "source-map-support": "^0.5.12",
+        "typescript": "^4.2.2"
+    },
     "dependencies": {
         "ftp": "^0.3.10",
         "htmlparser2": "^3.9.2",
