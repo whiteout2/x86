@@ -4,7 +4,7 @@
 
 - Migration to @vscode/test-electron API since vscode is deprecated
 - Show icon with correct size
-- Added view for VMX instructions
+- Added view for SMX instructions
 
 ## 0.3.3
 
