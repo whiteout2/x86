@@ -2,7 +2,7 @@
     "name": "x86",
     "displayName": "x86 Instruction Reference",
     "description": "Intel x86 instruction reference in a VS Code custom Activity Bar view",
-    "version": "0.4.0",
+    "version": "0.4.1",
     "publisher": "whiteout2",
     "engines": {
         "vscode": "^1.32.0"
