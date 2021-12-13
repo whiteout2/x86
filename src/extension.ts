@@ -126,6 +126,14 @@ function viewInstruction(moduleName, moduleLink)
 				{}
 			);
 
+			// TODO: load stylesheet
+			const onDiskPath = vscode.Uri.file(myExtDir + '/x86/style_hacked.css')
+			const styleSrc = panel.webview.asWebviewUri(onDiskPath)
+			console.log(styleSrc)
+			// style.css
+			body = body.replace('style.css', styleSrc.toString());
+			console.log(body)				
+
 			// And set its HTML content
 			panel.webview.html = body;
 
