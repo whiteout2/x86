@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.4.2
+
+- Added stylesheet to correctly show tables
+
 ## 0.4.0
 
 - Migration to @vscode/test-electron API since vscode is deprecated
