@@ -4,7 +4,7 @@
 - custom activity bar icon [x86] and keybinding (shift+cmd+i)
 - based on tree-view-sample
 - parses and references https://www.felixcloutier.com/x86
-- test: new version
+- new version: x86ex
 <br>
 
 
